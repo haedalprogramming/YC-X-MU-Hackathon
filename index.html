@@ -3,449 +3,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>연암공대 X 마산대 AI 헬스케어 해커톤</title>
-    <!-- Tailwind CSS CDN을 사용하여 스타일링 -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap');
-        
-        :root {
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-4: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            --neon-blue: #00d4ff;
-            --neon-purple: #a855f7;
-            --neon-pink: #ec4899;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
-            background: linear-gradient(to bottom, #0f0f0f, #1a1a2e);
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        
-        .bg-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-            z-index: -1;
-        }
-        
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .neon-text {
-            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(to right, #00d4ff, #a855f7, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hover-lift {
-            transition: all 0.3s ease;
-        }
-        
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
-        }
-        
-        .section-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 8px;
-            font-size: 2.5rem;
-            font-weight: 800;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50%;
-            height: 4px;
-            background: var(--gradient-3);
-            border-radius: 9999px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 20px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 0;
-            width: 10px;
-            height: 10px;
-            background: var(--gradient-3);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 4px;
-            width: 2px;
-            height: calc(100% - 15px);
-            background: linear-gradient(to bottom, rgba(0, 212, 255, 0.5), transparent);
-        }
-        
-        .timeline-item:last-child::after {
-            display: none;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse-animation {
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
-        }
-        
-        .btn-gradient {
-            background: var(--gradient-1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: left 0.3s ease;
-        }
-        
-        .btn-gradient:hover::before {
-            left: 100%;
-        }
-        
-        .emoji-icon {
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-        }
-    </style>
+    <title>연암공대 X 마산대 AI 해커톤 | AI로 만드는 건강한 미래</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="bg-pattern"></div>
-    <!-- Header -->
-    <header class="glassmorphism p-4 md:p-6 sticky top-0 z-50 border-b border-white/10">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <img src="https://placehold.co/50x50/667eea/ffffff?text=YC" alt="Yonam College Logo" class="h-12 rounded-full hover-lift">
-                <img src="https://placehold.co/50x50/a855f7/ffffff?text=MU" alt="Masan University Logo" class="h-12 rounded-full hover-lift">
-                <h1 class="text-xl md:text-2xl font-bold gradient-text">연암공대 X 마산대 AI 헬스케어 해커톤</h1>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/yc_logo.png" alt="연암공대" class="logo-img">
+                <span class="logo-x">X</span>
+                <img src="images/mu_logo.png" alt="마산대" class="logo-img">
             </div>
-            <nav class="hidden md:flex space-x-6 text-white/80 font-semibold">
-                <a href="#about" class="hover:text-white hover:neon-text transition-all duration-300">소개</a>
-                <a href="#theme" class="hover:text-white hover:neon-text transition-all duration-300">주제</a>
-                <a href="#schedule" class="hover:text-white hover:neon-text transition-all duration-300">일정</a>
-                <a href="#pre-edu" class="hover:text-white hover:neon-text transition-all duration-300">사전 교육</a>
-                <a href="#apply" class="hover:text-white hover:neon-text transition-all duration-300">신청</a>
-            </nav>
-            <button id="menu-button" class="md:hidden text-white hover:text-neon-blue focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">홈</a>
+                <a href="#about" class="nav-link">소개</a>
+                <a href="#theme" class="nav-link">주제</a>
+                <a href="#schedule" class="nav-link">일정</a>
+                <a href="#education" class="nav-link">교육</a>
+                <a href="#prizes" class="nav-link">시상</a>
+                <a href="#apply" class="nav-link apply-btn">지원하기</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden mt-4 p-4 glassmorphism rounded-lg">
-            <nav class="flex flex-col space-y-2 text-white/80 font-semibold">
-                <a href="#about" class="block py-2 px-4 hover:bg-white/10 rounded-md transition-all duration-300">소개</a>
-                <a href="#theme" class="block py-2 px-4 hover:bg-white/10 rounded-md transition-all duration-300">주제</a>
-                <a href="#schedule" class="block py-2 px-4 hover:bg-white/10 rounded-md transition-all duration-300">일정</a>
-                <a href="#pre-edu" class="block py-2 px-4 hover:bg-white/10 rounded-md transition-all duration-300">사전 교육</a>
-                <a href="#apply" class="block py-2 px-4 hover:bg-white/10 rounded-md transition-all duration-300">신청</a>
-            </nav>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container mx-auto p-4 md:p-8">
-
-        <!-- Hero Section -->
-        <section class="glassmorphism rounded-3xl p-8 md:p-16 text-center mb-12 card-hover">
-            <div class="float-animation">
-                <h2 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-                    <span class="gradient-text">연암공대-마산대</span><br>
-                    <span class="text-white neon-text" style="color: var(--neon-blue);">AI 헬스케어 해커톤</span>
-                    <span class="emoji-icon">🚀</span>
-                </h2>
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-down">
+                <span class="badge-text">🔥 모집 중</span>
+                <span class="badge-date">~9.19까지</span>
             </div>
-            <p class="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-8">
-                <span class="emoji-icon">💡</span>
-                AI 기술로 재설계하는 건강한 지역사회
-                <span class="emoji-icon">🏥</span>
+            <h1 class="hero-title" data-aos="fade-up">
+                <span class="title-line">AI 기술로</span>
+                <span class="title-line gradient-text">재설계하는</span>
+                <span class="title-line">건강한 지역사회</span>
+            </h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                연암공대 X 마산대가 함께하는 2박 3일 AI 헬스케어 해커톤
             </p>
-            <a href="#apply" class="inline-block btn-gradient text-white text-lg font-bold py-4 px-10 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 pulse-animation">
-                <span class="emoji-icon">🔥</span>
-                지금 바로 참가 신청하기!
-                <span class="emoji-icon">👆</span>
-            </a>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="glassmorphism rounded-3xl p-8 md:p-12 mb-12 card-hover">
-            <h3 class="text-center mb-8 section-title gradient-text">
-                <span class="emoji-icon">🤔</span> 해커톤이란?
-            </h3>
-            <div class="text-center text-lg text-white/90 space-y-4">
-                <p>
-                    <span class="emoji-icon">💻</span>
-                    해커톤(Hackathon)은 '해킹(Hack)'과 '마라톤(Marathon)'의 합성어로, 정해진 시간 동안 팀을 이루어 아이디어를 기획하고, 프로그래밍을 통해 시제품(prototype)을 개발하는 대회를 의미합니다.
-                </p>
-            </div>
-        </section>
-
-        <!-- Theme Section -->
-        <section id="theme" class="glassmorphism rounded-3xl p-8 md:p-12 mb-12 card-hover">
-            <h3 class="text-center mb-8 section-title gradient-text">
-                <span class="emoji-icon">🎯</span> 해커톤 주제
-            </h3>
-            <div class="text-center text-lg text-white/90 space-y-4">
-                <p class="font-bold text-3xl neon-text" style="color: var(--neon-purple);">
-                    <span class="emoji-icon">🤖</span>
-                    "AI 기술로 재설계하는 건강한 지역사회"
-                    <span class="emoji-icon">🏥</span>
-                </p>
-                <div class="glassmorphism p-6 rounded-2xl mt-6">
-                    <p class="mb-4">
-                        <span class="emoji-icon">🌟</span>
-                        이번 해커톤은 지역사회의 건강 이슈에 초점을 맞춘 주제로 진행됩니다. 연암공대의 AI/공학 기술과 마산대의 보건/헬스케어 전문성을 결합하여, 지역사회 문제를 해결할 혁신적인 아이디어를 제안하고 구현해 보세요.
-                    </p>
-                    <p>
-                        <span class="emoji-icon">📱</span>
-                        최종 선정된 주제를 바탕으로 웹 앱, 모바일 앱 등 자유로운 형식의 결과물을 만들어내는 경험을 하게 됩니다.
-                        <span class="emoji-icon">💡</span>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Schedule Section -->
-        <section id="schedule" class="glassmorphism rounded-3xl p-8 md:p-12 mb-12 card-hover">
-            <h3 class="text-center mb-8 section-title gradient-text">
-                <span class="emoji-icon">📅</span> 주요 일정
-            </h3>
-            <div class="max-w-2xl mx-auto">
-                <div class="timeline-item hover-lift">
-                    <div class="font-bold text-xl text-white">
-                        <span class="emoji-icon">📢</span> 참가자 모집
-                    </div>
-                    <div class="text-white/70">2025년 8월 18일(월) ~ 9월 17일(수)</div>
-                </div>
-                <div class="timeline-item hover-lift">
-                    <div class="font-bold text-xl text-white">
-                        <span class="emoji-icon">💻</span> 온라인 자율학습 교육
-                    </div>
-                    <div class="text-white/70">2025년 8월 18일(월) ~ 9월 19일(금)</div>
-                </div>
-                <div class="timeline-item hover-lift">
-                    <div class="font-bold text-xl text-white">
-                        <span class="emoji-icon">📋</span> 합격자 안내 및 일정 소개
-                    </div>
-                    <div class="text-white/70">2025년 9월 18일(목) ~ 9월 19일(금)</div>
-                </div>
-                <div class="timeline-item hover-lift">
-                    <div class="font-bold text-xl text-white">
-                        <span class="emoji-icon">🤝</span> 발대식 및 팀빌딩
-                    </div>
-                    <div class="text-white/70">2025년 9월 20일(토) 14:00~16:00 (추후 안내)</div>
-                </div>
-                <div class="timeline-item hover-lift">
-                    <div class="font-bold text-xl text-white">
-                        <span class="emoji-icon">🚀</span> 해커톤 진행
-                    </div>
-                    <div class="text-white/70">2025년 9월 27일(토) ~ 9월 28일(일) (추후 안내)</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pre-Education Section -->
-        <section id="pre-edu" class="glassmorphism rounded-3xl p-8 md:p-12 mb-12 card-hover">
-            <h3 class="text-center mb-8 section-title gradient-text">
-                <span class="emoji-icon">📚</span> 사전 교육 프로그램
-            </h3>
-            <div class="text-center text-lg text-white/90 space-y-4">
-                <p>
-                    <span class="emoji-icon">🎓</span>
-                    해커톤 본선에 앞서 참가자들이 성공적인 결과물을 만들 수 있도록 온라인 자율학습 형태로 사전 교육을 제공합니다.
-                </p>
-                <div class="glassmorphism p-6 rounded-2xl space-y-4 hover-lift">
-                    <p class="font-semibold text-white">
-                        <span class="emoji-icon">☁️</span>
-                        교육 모듈: Google Cloud Skill Boost 및 기타 학습 가이드
-                    </p>
-                    <p class="text-white/80">
-                        AI 기초 및 응용, IT 서비스 런칭, 데이터 활용 및 분석, 클라우드 플랫폼 활용법 등 해커톤 진행에 필수적인 지식을 습득할 수 있습니다.
-                    </p>
-                </div>
-                <p class="mt-4 font-bold text-2xl neon-text" style="color: var(--neon-pink);">
-                    <span class="emoji-icon">💡</span> 온라인 교육을 끝까지 이수한 학생들은 국제 자격증에 응시가 가능합니다! <span class="emoji-icon">🎁</span>
-                </p>
-            </div>
-        </section>
-
-        <!-- Apply Section -->
-        <section id="apply" class="glassmorphism rounded-3xl p-8 md:p-12 mb-12 text-center card-hover">
-            <h3 class="mb-6 section-title gradient-text">
-                <span class="emoji-icon">🎯</span> 참가 신청
-            </h3>
-            <p class="text-xl text-white/90 mb-8">
-                <span class="emoji-icon">💫</span>
-                혁신적인 아이디어를 실현할 기회에 도전하세요!
-                <span class="emoji-icon">🌟</span>
-            </p>
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
-                <a href="https://forms.gle/M2iW7Zw8K3XbHjC69" target="_blank" class="w-full md:w-auto btn-gradient text-white font-bold py-4 px-12 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 pulse-animation">
-                    <span class="emoji-icon">📝</span>
-                    신청서 작성하기
-                    <span class="emoji-icon">🚀</span>
+            <div class="hero-cta" data-aos="fade-up" data-aos-delay="200">
+                <a href="#apply" class="cta-primary">
+                    <span>지금 바로 신청하기</span>
+                    <i class="fas fa-arrow-right"></i>
                 </a>
-                <div class="flex items-center space-x-2 text-white/80">
-                    <span class="emoji-icon">💬</span>
-                    <span>지원자 문의: hackathon@haedal.io</span>
+                <button class="cta-secondary share-btn">
+                    <i class="fas fa-share-alt"></i>
+                    <span>공유하기</span>
+                </button>
+            </div>
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-item">
+                    <div class="stat-number">40</div>
+                    <div class="stat-label">모집인원</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">700</div>
+                    <div class="stat-label">총 상금(만원)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">박 3일</div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="glassmorphism text-white/80 p-6 border-t border-white/10 mt-12">
-        <div class="container mx-auto text-center text-sm">
-            <p>&copy; 2025 연암공과대학교, 마산대학교, 해달프로그래밍. All Rights Reserved. <span class="emoji-icon">💙</span></p>
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">왜 이 해커톤인가?</h2>
+                <p class="section-subtitle">기술과 의료의 만남, 당신의 아이디어가 미래를 바꿉니다</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI 기술 경험</h3>
+                    <p>Google Cloud 전문가의 멘토링과 함께 실제 AI 기술을 활용한 프로젝트 경험</p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>헬스케어 융합</h3>
+                    <p>공학도와 간호학도의 시너지로 만드는 실용적인 헬스케어 솔루션</p>
+                </div>
+                <div class="about-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>네트워킹</h3>
+                    <p>다양한 전공의 학생들과 함께하는 협업 경험과 인적 네트워크 구축</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="theme" class="section theme">
+        <div class="container">
+            <div class="theme-content">
+                <div class="theme-text" data-aos="fade-right">
+                    <h2 class="section-title">해커톤 주제</h2>
+                    <h3 class="theme-main">AI 기술로 재설계하는<br>건강한 지역사회</h3>
+                    <p class="theme-desc">
+                        지역사회의 건강 문제를 AI 기술로 해결하는 혁신적인 아이디어를 제안해주세요.
+                        의료 접근성 향상, 건강 관리 자동화, 예방 의학 솔루션 등 다양한 접근이 가능합니다.
+                    </p>
+                    <div class="theme-examples">
+                        <h4>💡 아이디어 예시</h4>
+                        <ul>
+                            <li>AI 기반 개인 맞춤형 건강 관리 앱</li>
+                            <li>지역 의료 데이터 분석 대시보드</li>
+                            <li>원격 진료 지원 AI 챗봇</li>
+                            <li>스마트 약물 복용 관리 시스템</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="theme-visual" data-aos="fade-left">
+                    <div class="theme-cards">
+                        <div class="theme-card card-1">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Tech</span>
+                        </div>
+                        <div class="theme-card card-2">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="theme-card card-3">
+                            <i class="fas fa-hospital"></i>
+                            <span>Healthcare</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">일정</h2>
+                <p class="section-subtitle">2025년 9월 27일(토) ~ 28일(일)</p>
+            </div>
+            <div class="timeline" data-aos="fade-up">
+                <div class="timeline-item">
+                    <div class="timeline-date">8.18 - 9.19</div>
+                    <div class="timeline-content">
+                        <h3>참가자 모집 & 사전교육</h3>
+                        <p>Google Cloud Skill Boost 온라인 교육</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">9.20</div>
+                    <div class="timeline-content">
+                        <h3>발대식</h3>
+                        <p>팀 빌딩 및 오리엔테이션</p>
+                    </div>
+                </div>
+                <div class="timeline-item active">
+                    <div class="timeline-date">9.27 - 9.28</div>
+                    <div class="timeline-content">
+                        <h3>해커톤 본선</h3>
+                        <p>2박 3일간의 집중 개발</p>
+                    </div>
+                </div>
+            </div>
+            <div class="schedule-details" data-aos="fade-up">
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>장소</h4>
+                    <p>추후 공지</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-bus"></i>
+                    <h4>이동</h4>
+                    <p>학교별 셔틀버스 운영</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-utensils"></i>
+                    <h4>식사</h4>
+                    <p>전 일정 식사 제공</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section education">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">사전 교육 프로그램</h2>
+                <p class="section-subtitle">Google Cloud Skill Boost로 실력 UP! 🚀</p>
+            </div>
+            <div class="education-cards">
+                <div class="edu-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="edu-header">
+                        <span class="edu-level">기초</span>
+                        <h3>코딩 초보자 필수 코스</h3>
+                    </div>
+                    <div class="edu-content">
+                        <div class="edu-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>웹개발</h4>
+                                <p>Material Design 구현</p>
+                            </div>
+                        </div>
+                        <div class="edu-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <h4>앱개발</h4>
+                                <p>Flutter 앱 개발</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="edu-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <div class="edu-header">
+                        <span class="edu-level">심화</span>
+                        <h3>Google 공식 자격증 취득</h3>
+                    </div>
+                    <div class="edu-content">
+                        <div class="edu-item">
+                            <i class="fas fa-cloud"></i>
+                            <div>
+                                <h4>클라우드 디지털 리더</h4>
+                                <p>클라우드 기초 자격증</p>
+                            </div>
+                        </div>
+                        <div class="edu-item">
+                            <i class="fas fa-robot"></i>
+                            <div>
+                                <h4>생성형 AI 리더</h4>
+                                <p>AI 활용 전문가 자격증</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="edu-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>수료증 발급</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prizes" class="section prizes">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">시상 내역</h2>
+                <p class="section-subtitle">총 상금 700만원! 당신의 아이디어가 현실이 됩니다</p>
+            </div>
+            <div class="prize-grid">
+                <div class="prize-card grand" data-aos="fade-up" data-aos-delay="100">
+                    <div class="prize-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>대상</h3>
+                    <div class="prize-amount">200만원</div>
+                    <div class="prize-teams">1팀</div>
+                </div>
+                <div class="prize-card gold" data-aos="fade-up" data-aos-delay="200">
+                    <div class="prize-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>금상</h3>
+                    <div class="prize-amount">150만원</div>
+                    <div class="prize-teams">1팀</div>
+                </div>
+                <div class="prize-card silver" data-aos="fade-up" data-aos-delay="300">
+                    <div class="prize-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>은상</h3>
+                    <div class="prize-amount">100만원</div>
+                    <div class="prize-teams">2팀</div>
+                </div>
+                <div class="prize-card bronze" data-aos="fade-up" data-aos-delay="400">
+                    <div class="prize-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>동상</h3>
+                    <div class="prize-amount">50만원</div>
+                    <div class="prize-teams">3팀</div>
+                </div>
+            </div>
+            <div class="criteria" data-aos="fade-up">
+                <h3>심사 기준</h3>
+                <div class="criteria-grid">
+                    <div class="criteria-item">
+                        <div class="criteria-percentage">35%</div>
+                        <h4>아이디어</h4>
+                        <p>창의적 문제 해결력</p>
+                    </div>
+                    <div class="criteria-item">
+                        <div class="criteria-percentage">35%</div>
+                        <h4>기술력</h4>
+                        <p>기술 활용 능력</p>
+                    </div>
+                    <div class="criteria-item">
+                        <div class="criteria-percentage">30%</div>
+                        <h4>현실가능성</h4>
+                        <p>실용적 구현 가능성</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apply" class="section apply">
+        <div class="container">
+            <div class="apply-content" data-aos="fade-up">
+                <h2 class="section-title">지금 바로 도전하세요!</h2>
+                <p class="apply-desc">AI와 헬스케어의 미래를 함께 만들어갈 40명을 찾습니다</p>
+                <div class="apply-info">
+                    <div class="info-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <div>
+                            <h4>참가 대상</h4>
+                            <p>연암공과대학교 재학생<br>마산대학교 간호학과 재학생</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <h4>참가자 혜택</h4>
+                            <p>프로젝트 활동비 지급<br>기념품 및 전 일정 식사 제공</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="apply-buttons">
+                    <a href="#" class="btn-apply-now">
+                        <span>신청서 작성하기</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#" class="btn-discord">
+                        <i class="fab fa-discord"></i>
+                        <span>문의하기</span>
+                    </a>
+                </div>
+                <div class="hashtags">
+                    <span>#연암공대X마산대</span>
+                    <span>#AI해커톤</span>
+                    <span>#헬스케어</span>
+                    <span>#GoogleCloud</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logos">
+                    <img src="images/yc_logo.png" alt="연암공대">
+                    <img src="images/mu_logo.png" alt="마산대">
+                    <img src="images/haedal_logo.png" alt="해달">
+                </div>
+                <div class="footer-info">
+                    <p>주최: 연암공과대학교, 마산대학교</p>
+                    <p>© 2025 YC X MU AI Hackathon. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <button class="social-btn" data-social="instagram">
+                        <i class="fab fa-instagram"></i>
+                    </button>
+                    <button class="social-btn" data-social="facebook">
+                        <i class="fab fa-facebook"></i>
+                    </button>
+                    <button class="social-btn" data-social="twitter">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // 모바일 메뉴 토글 기능
-        document.getElementById('menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // 스크롤 애니메이션
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // 모든 섹션에 스크롤 애니메이션 적용
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach((section, index) => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(50px)';
-                section.style.transition = 'all 0.8s ease-out';
-                section.style.transitionDelay = `${index * 0.1}s`;
-                observer.observe(section);
-            });
-            
-            // 부드러운 스크롤
-            const links = document.querySelectorAll('a[href^="#"]');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-            
-            // 마우스 따라다니는 그라디언트 효과
-            const bgPattern = document.querySelector('.bg-pattern');
-            document.addEventListener('mousemove', function(e) {
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
-                
-                bgPattern.style.background = `
-                    radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(168, 85, 247, 0.2) 0%, transparent 50%),
-                    radial-gradient(circle at ${(1-x) * 100}% ${(1-y) * 100}%, rgba(0, 212, 255, 0.2) 0%, transparent 50%),
-                    radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%)
-                `;
-            });
-            
-            // 타이핑 효과
-            const typingTexts = document.querySelectorAll('.gradient-text');
-            typingTexts.forEach(text => {
-                text.addEventListener('mouseenter', function() {
-                    this.style.animation = 'pulse 0.5s ease-in-out';
-                });
-                text.addEventListener('animationend', function() {
-                    this.style.animation = '';
-                });
-            });
-        });
-    </script>
+    <div class="share-modal" id="shareModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3>해커톤 공유하기</h3>
+            <div class="share-buttons">
+                <button class="share-btn-modal" data-share="kakao">
+                    <i class="fas fa-comment"></i>
+                    <span>카카오톡</span>
+                </button>
+                <button class="share-btn-modal" data-share="instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>인스타그램</span>
+                </button>
+                <button class="share-btn-modal" data-share="facebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>페이스북</span>
+                </button>
+                <button class="share-btn-modal" data-share="twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>트위터</span>
+                </button>
+                <button class="share-btn-modal" data-share="link">
+                    <i class="fas fa-link"></i>
+                    <span>링크 복사</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
