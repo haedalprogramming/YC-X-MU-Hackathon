@@ -75,6 +75,55 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
+// Poster section toggle
+const posterViewBtn = document.getElementById('posterViewBtn');
+const posterSection = document.getElementById('poster-section');
+let isPosterVisible = false;
+
+function updatePosterButton() {
+    const buttonText = posterViewBtn.querySelector('span');
+    const buttonIcon = posterViewBtn.querySelector('i');
+    
+    if (isPosterVisible) {
+        buttonText.textContent = '포스터 닫기';
+        buttonIcon.className = 'fas fa-times';
+    } else {
+        buttonText.textContent = '포스터 보기';
+        buttonIcon.className = 'fas fa-image';
+    }
+}
+
+posterViewBtn.addEventListener('click', () => {
+    if (!isPosterVisible) {
+        // Show poster
+        posterSection.style.display = 'block';
+        setTimeout(() => {
+            posterSection.classList.add('show');
+        }, 10);
+        
+        // Smooth scroll to poster section with navbar offset
+        setTimeout(() => {
+            const offsetTop = posterSection.offsetTop - 80; // Account for navbar height
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }, 100);
+        
+        isPosterVisible = true;
+    } else {
+        // Hide poster
+        posterSection.classList.remove('show');
+        setTimeout(() => {
+            posterSection.style.display = 'none';
+        }, 500);
+        
+        isPosterVisible = false;
+    }
+    
+    updatePosterButton();
+});
+
 // Share modal
 const shareBtn = document.querySelector('.share-btn');
 const shareModal = document.getElementById('shareModal');
@@ -92,55 +141,6 @@ shareModal.addEventListener('click', (e) => {
     if (e.target === shareModal) {
         shareModal.classList.remove('active');
     }
-});
-
-// Share buttons functionality
-document.querySelectorAll('.share-btn-modal').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const shareType = btn.getAttribute('data-share');
-        const url = window.location.href;
-        const text = '연암공대 X 마산대 AI 해커톤에 참가하세요! 🚀';
-        
-        switch(shareType) {
-            case 'kakao':
-                // Kakao share would require Kakao SDK
-                alert('카카오톡 공유 기능은 준비 중입니다.');
-                break;
-            case 'facebook':
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
-                break;
-            case 'twitter':
-                window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-                break;
-            case 'instagram':
-                alert('인스타그램 공유는 모바일 앱에서 가능합니다.');
-                break;
-            case 'link':
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('링크가 복사되었습니다!');
-                });
-                break;
-        }
-    });
-});
-
-// Social buttons
-document.querySelectorAll('.social-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const social = btn.getAttribute('data-social');
-        // Add actual social media links here
-        switch(social) {
-            case 'instagram':
-                window.open('https://instagram.com/yourhandle', '_blank');
-                break;
-            case 'facebook':
-                window.open('https://facebook.com/yourpage', '_blank');
-                break;
-            case 'twitter':
-                window.open('https://twitter.com/yourhandle', '_blank');
-                break;
-        }
-    });
 });
 
 // Countdown timer (optional)
@@ -210,10 +210,10 @@ applyButton.addEventListener('click', (e) => {
     window.open('https://forms.google.com/your-form-link', '_blank');
 });
 
-// Discord button
-const discordButton = document.querySelector('.btn-discord');
-discordButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    // Add Discord invite link
-    window.open('https://discord.gg/your-invite-code', '_blank');
-});
+// Email button
+const emailButton = document.querySelector('.btn-email');
+if (emailButton) {
+    emailButton.addEventListener('click', (e) => {
+        // Email functionality is handled by mailto: link in HTML
+    });
+}
