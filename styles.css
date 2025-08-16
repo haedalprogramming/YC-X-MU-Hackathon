@@ -79,6 +79,7 @@ body {
     top: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
@@ -197,6 +198,7 @@ body {
         padding: 2rem 0;
         z-index: 999;
         gap: 1rem;
+        -webkit-backdrop-filter: blur(20px);
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -304,8 +306,22 @@ body {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 5px;
     flex-shrink: 0;
+}
+
+.nav-actions > * + * {
+    margin-left: 5px;
+}
+
+/* 최신 브라우저에서는 gap 사용 */
+@supports (gap: 5px) {
+    .nav-actions {
+        gap: 5px;
+    }
+    
+    .nav-actions > * + * {
+        margin-left: 0;
+    }
 }
 
 .theme-toggle {
@@ -652,6 +668,15 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* 사파리 폴백 */
+    color: var(--primary-color);
+}
+
+/* 그래디언트 텍스트를 지원하는 브라우저에서만 투명 색상 적용 */
+@supports (-webkit-background-clip: text) {
+    .gradient-text {
+        color: transparent;
+    }
 }
 
 .hero-subtitle {
@@ -1133,8 +1158,15 @@ body {
 
 .about-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+}
+
+/* auto-fit을 지원하는 브라우저에서 사용 */
+@supports (grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))) {
+    .about-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
 }
 
 @media (max-width: 991px) {
@@ -1583,8 +1615,15 @@ body {
 
 .education-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+}
+
+/* auto-fit을 지원하는 브라우저에서 사용 */
+@supports (grid-template-columns: repeat(auto-fit, minmax(350px, 1fr))) {
+    .education-cards {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
 }
 
 @media (max-width: 991px) {
@@ -2667,15 +2706,22 @@ body {
    접근성 및 터치 친화적 개선
    ========================= */
 
-/* 포커스 가시성 개선 - 키보드 네비게이션만 */
-*:focus-visible {
+/* 포커스 가시성 개선 - 사파리 호환성 포함 */
+*:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
 }
 
-/* 마우스 클릭 시 포커스 아웃라인 제거 */
-*:focus:not(:focus-visible) {
-    outline: none;
+/* 최신 브라우저용 키보드 네비게이션만 */
+@supports selector(:focus-visible) {
+    *:focus:not(:focus-visible) {
+        outline: none;
+    }
+    
+    *:focus-visible {
+        outline: 2px solid var(--primary-color);
+        outline-offset: 2px;
+    }
 }
 
 /* 키보드 네비게이션을 위한 건너뛰기 링크 */
@@ -2736,6 +2782,48 @@ button, a, input, select, textarea, [role=\"button\"], [tabindex] {
     
     .scroll-indicator {
         animation: none;
+    }
+}
+
+/* 모바일 환경에서 애니메이션 비활성화 */
+@media (max-width: 767px) {
+    * {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0.2s !important;
+    }
+    
+    .gradient-orb {
+        animation: none !important;
+        opacity: 0.3 !important;
+        filter: blur(50px) !important;
+    }
+    
+    .scroll-indicator {
+        animation: none !important;
+    }
+    
+    /* AOS 애니메이션 비활성화 */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    /* 호버 효과 간소화 */
+    .about-card:hover,
+    .edu-card:hover,
+    .prize-card:hover,
+    .participant-item:hover,
+    .criteria-card:hover {
+        transform: none !important;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .cta-primary:hover,
+    .btn-apply-now:hover,
+    .btn-email:hover {
+        transform: none !important;
     }
 }
 
